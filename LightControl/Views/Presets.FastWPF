@@ -1,0 +1,15 @@
+{
+  "DataContextSnapshots": [
+    {
+      "Json": "{\r\n  \"$id\": \"1\",\r\n  \"Presets\": {\r\n    \"$id\": \"2\",\r\n    \"$values\": [\r\n      {\r\n        \"$id\": \"3\",\r\n        \"Name\": \"Standart\",\r\n        \"Key\": 90\r\n      },\r\n      {\r\n        \"$id\": \"4\",\r\n        \"Name\": \"Lampen Art mit Lang\",\r\n        \"Key\": 91\r\n      }\r\n    ]\r\n  },\r\n  \"TimeSettings\": {\r\n    \"$id\": \"5\",\r\n    \"$values\": [\r\n      {\r\n        \"$id\": \"6\",\r\n        \"Key\": \"Fast\",\r\n        \"Value\": 500\r\n      },\r\n      {\r\n        \"$id\": \"7\",\r\n        \"Key\": \"Cool\",\r\n        \"Value\": 10\r\n      }\r\n    ]\r\n  },\r\n  \"SelectedTime\": {\r\n    \"$ref\": \"6\"\r\n  }\r\n}",
+      "CreationDate": "2019-11-16T17:57:16.2362492+01:00",
+      "IsDefault": false,
+      "Id": "0c26072b-19dd-4c3a-b4f5-47aa38db0894",
+      "Name": "Default",
+      "LastUpdate": "2019-11-16T18:05:04.3314982+01:00"
+    }
+  ],
+  "LastCalledDesignMethod": null,
+  "LastActiveDesignerType": null,
+  "CustomAssemblies": null
+}

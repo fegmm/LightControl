@@ -1,0 +1,15 @@
+{
+  "DataContextSnapshots": [
+    {
+      "Json": "{\r\n  \"$id\": \"1\",\r\n  \"Lamp\": {\r\n    \"$id\": \"2\",\r\n    \"Brightness\": 255.0\r\n  },\r\n  \"Title\": \"Test\"\r\n}",
+      "CreationDate": "2019-11-16T18:22:56.4231347+01:00",
+      "IsDefault": false,
+      "Id": "aaae2fab-e6c7-46ad-839b-f5adf92d97fc",
+      "Name": "Default",
+      "LastUpdate": "2019-11-16T18:23:18.2500548+01:00"
+    }
+  ],
+  "LastCalledDesignMethod": null,
+  "LastActiveDesignerType": null,
+  "CustomAssemblies": null
+}

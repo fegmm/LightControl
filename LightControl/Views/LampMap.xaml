@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="LightControl.Views.LampMap"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:Controls="clr-namespace:LightControl.Controls"
+             xmlns:Models="clr-namespace:LightControl.Models"
+             xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type Models:Lamp}">
+            <Grid>
+                <AdornerDecorator Panel.ZIndex="-1" IsHitTestVisible="False">
+                    <Rectangle Height="{c:Binding Height+40}" Width="{c:Binding Width+40}" IsHitTestVisible="False">
+                        <Rectangle.Fill>
+                            <RadialGradientBrush>
+                                <RadialGradientBrush.GradientStops>
+                                    <GradientStop Offset="{c:Binding 'Math.Min(Height, Width)/(Math.Min(Height, Width)+40)'}" Color="WhiteSmoke"/>
+                                    <GradientStop Color="Transparent" Offset="{c:Binding '(Math.Min(Height, Width) + 40 * Brightness / 255)/(Math.Min(Height, Width)+40)'}"/>
+                                </RadialGradientBrush.GradientStops>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </AdornerDecorator>
+                <Button Cursor="Wait" Height="{Binding Height}" Width="{Binding Width}"  IsEnabled="{c:Binding !Locked}">
+                    <IconPacks:PackIconMaterial Kind="{Binding Icon}"/>
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Highlighted}" Value="True">
+                                    <Setter Property="BorderBrush" Value="Red"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding GroupHighlighted}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Models:EurolitePMB8}">
+            <Grid>
+                <AdornerDecorator Panel.ZIndex="-1" IsHitTestVisible="False">
+                    <Rectangle Height="{c:Binding Height+40}" Width="{c:Binding Width+40}" IsHitTestVisible="False">
+                        <Rectangle.Fill>
+                            <RadialGradientBrush>
+                                <RadialGradientBrush.GradientStops>
+                                    <GradientStop Offset="{c:Binding 'Math.Min(Height, Width)/(Math.Min(Height, Width)+40)'}" Color="{c:Binding Colors[0]}"/>
+                                    <GradientStop Color="Transparent" Offset="{c:Binding '(Math.Min(Height, Width) + 40 * Brightness / 255)/(Math.Min(Height, Width)+40)'}"/>
+                                </RadialGradientBrush.GradientStops>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </AdornerDecorator>
+                <Button Cursor="Wait" Height="{Binding Height}" Width="{Binding Width}"  IsEnabled="{c:Binding !Locked}">
+                    <IconPacks:PackIconMaterial Kind="{Binding Icon}"/>
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Highlighted}" Value="True">
+                                    <Setter Property="BorderBrush" Value="Red"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding GroupHighlighted}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <GroupBox Header="Lamps" Padding="0">
+        <Controls:BindableInkCanvas ItemsSource="{Binding Lamps}" 
+                         EditingMode="Select" 
+                         MoveEnabled="False" 
+                         IsManipulationEnabled="False" 
+                         ResizeEnabled="False" 
+                         SelectionCommand="{Binding SelectionCommand}"
+                         RightClickCommand="{Binding OpenEditCommand}">
+            <Controls:BindableInkCanvas.ItemTemplate>
+                <DataTemplate DataType="{x:Type Models:Lamp}">
+                    <Grid InkCanvas.Left="{Binding PosX}" InkCanvas.Top="{Binding PosY}" ToolTip="{Binding Name}">
+                        <ContentPresenter Content="{Binding .}"/>
+                    </Grid>
+                </DataTemplate>
+            </Controls:BindableInkCanvas.ItemTemplate>
+        </Controls:BindableInkCanvas>
+    </GroupBox>
+</UserControl>

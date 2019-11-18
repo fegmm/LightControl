@@ -1,0 +1,27 @@
+﻿<Controls:MetroWindow x:Class="LightControl.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" WindowState="Maximized" WindowStyle="None" UseNoneWindowStyle="True" ResizeMode="NoResize">
+    <ItemsControl prism:RegionManager.RegionName="MainContent">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <DockPanel></DockPanel>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseWheel">
+            <prism:InvokeCommandAction Command="{Binding MouseWheelCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="KeyUp">
+            <prism:InvokeCommandAction Command="{Binding KeyCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="KeyDown">
+            <prism:InvokeCommandAction Command="{Binding KeyCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+</Controls:MetroWindow>
